@@ -12,5 +12,6 @@ public:
 };
 
 ReTooled::Game *ReTooled::createGame() {
+    RT_LOG_INFO("ExampleGame created");
     return new ExampleGame();
 }
