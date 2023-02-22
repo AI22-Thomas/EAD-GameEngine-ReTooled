@@ -20,4 +20,7 @@ namespace ReTooled {
 
 } // ReTooled
 
+#define RT_LOG_INFO(...) ::ReTooled::Log::getClientLogger()->info(__VA_ARGS__)
+#define RT_CORE_LOG_INFO(...) ::ReTooled::Log::getCoreLogger()->info(__VA_ARGS__)
+
 #endif //RETOOLED_LOG_HPP
