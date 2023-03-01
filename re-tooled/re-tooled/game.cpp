@@ -12,8 +12,6 @@ namespace ReTooled {
 
     void Game::run() {
         while (true) {
-            // print test
-            std::cout << "Hello, World!" << std::endl;
             break;
         }
     }
