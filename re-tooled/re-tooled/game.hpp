@@ -2,6 +2,7 @@
 #define RETOOLED_GAME_HPP
 
 #include "event.hpp"
+#include "log.hpp"
 
 namespace ReTooled {
     class Game {

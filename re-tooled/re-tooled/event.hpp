@@ -25,14 +25,15 @@ namespace ReTooled {
         EventType type;
     };
 
+    using EventPointer = std::shared_ptr<Event>;
+
     struct EventPolicy {
-        static EventType getEvent(const Event &event) {
-            return event.getType();
+        static EventType getEvent(const EventPointer &event) {
+            return event->getType();
         }
     };
-
-    using QueueType = eventpp::EventQueue<EventType, void(const Event &), EventPolicy>;
-    using ListenerType = void(const Event &);
+    using ListenerType = void(const EventPointer &);
+    using QueueType = eventpp::EventQueue<EventType, ListenerType, EventPolicy>;
 
     class KeyboardEvent: public Event {
     public:

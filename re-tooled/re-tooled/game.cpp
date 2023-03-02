@@ -13,7 +13,7 @@ namespace ReTooled {
     void Game::run() {
 
         // Create test event
-        eventQueue->enqueue(KeyboardEvent{10});
+        eventQueue->enqueue(std::make_shared<KeyboardEvent>(10));
 
         while (true) {
             // Process events
