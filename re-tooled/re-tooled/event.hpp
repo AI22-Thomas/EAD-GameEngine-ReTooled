@@ -1,8 +1,6 @@
 #ifndef RETOOLED_EVENT_HPP
 #define RETOOLED_EVENT_HPP
 
-#include "eventpp/eventqueue.h"
-
 namespace ReTooled {
     enum class EventType {
         None = 0,

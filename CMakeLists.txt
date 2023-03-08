@@ -7,10 +7,14 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_library(ReTooled SHARED
+        re-tooled/re-tooled/rtpch.hpp
         re-tooled/re-tooled/game.cpp
         re-tooled/re-tooled/entrypoint.hpp
-        re-tooled/re-tooled/log.cpp re-tooled/re-tooled/event.hpp)
+        re-tooled/re-tooled/log.cpp
+        re-tooled/re-tooled/event.hpp)
 add_executable(ExampleGame example-game/main.cpp)
+
+target_precompile_headers(ReTooled PUBLIC re-tooled/re-tooled/rtpch.hpp)
 
 target_include_directories(ExampleGame PUBLIC re-tooled)
 target_include_directories(ReTooled PUBLIC re-tooled/vendor/spdlog/include)

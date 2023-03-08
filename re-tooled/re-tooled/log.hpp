@@ -1,9 +1,6 @@
 #ifndef RETOOLED_LOG_HPP
 #define RETOOLED_LOG_HPP
 
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
-
 namespace ReTooled {
 
     class Log {
