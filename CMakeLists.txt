@@ -9,10 +9,11 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 add_library(ReTooled SHARED
         re-tooled/re-tooled/game.cpp
         re-tooled/re-tooled/entrypoint.hpp
-        re-tooled/re-tooled/log.cpp)
+        re-tooled/re-tooled/log.cpp re-tooled/re-tooled/event.hpp)
 add_executable(ExampleGame example-game/main.cpp)
 
 target_include_directories(ExampleGame PUBLIC re-tooled)
 target_include_directories(ReTooled PUBLIC re-tooled/vendor/spdlog/include)
+target_include_directories(ReTooled PUBLIC re-tooled/vendor/eventpp/include)
 
 target_link_libraries(ExampleGame ReTooled)

@@ -1,3 +1,6 @@
 [submodule "re-tooled/vendor/spdlog"]
 	path = re-tooled/vendor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "re-tooled/vendor/eventpp"]
+	path = re-tooled/vendor/eventpp
+	url = https://github.com/wqking/eventpp.git
