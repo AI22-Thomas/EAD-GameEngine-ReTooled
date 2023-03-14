@@ -9,18 +9,18 @@ namespace ReTooled {
 
     class Event {
     public:
-        explicit Event(const EventType eType) : type(eType) {
+        explicit Event(const EventType eType) : m_type(eType) {
 
         }
 
         virtual ~Event() = default;
 
         EventType getType() const {
-            return type;
+            return m_type;
         }
 
     private:
-        EventType type;
+        EventType m_type;
     };
 
     using EventPointer = std::shared_ptr<Event>;
@@ -35,14 +35,14 @@ namespace ReTooled {
 
     class KeyboardEvent: public Event {
     public:
-        KeyboardEvent(int key) : Event(EventType::Keyboard), key(key) {}
+        KeyboardEvent(int key) : Event(EventType::Keyboard), m_key(key) {}
 
         int getKey() const {
-            return key;
+            return m_key;
         }
 
     private:
-        int key;
+        int m_key;
     };
 }
 

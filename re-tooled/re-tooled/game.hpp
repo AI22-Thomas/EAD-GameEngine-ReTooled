@@ -3,6 +3,7 @@
 
 #include "event.hpp"
 #include "log.hpp"
+#include "window.hpp"
 
 namespace ReTooled {
     class Game {
@@ -15,7 +16,9 @@ namespace ReTooled {
 
         void registerEventListener(EventType type, ListenerType listener);
     private:
-        QueueType *eventQueue;
+        void onEvent(const EventPointer &event);
+        QueueType *m_eventQueue;
+        Window *m_window;
     };
 
     Game *createGame();

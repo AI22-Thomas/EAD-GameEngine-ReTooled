@@ -2,6 +2,7 @@
 #define RETOOLED_RTPCH_HPP
 
 #include <iostream>
+#include <GLFW/glfw3.h>
 
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"

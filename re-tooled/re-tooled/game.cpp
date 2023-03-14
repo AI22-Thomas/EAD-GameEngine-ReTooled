@@ -2,28 +2,29 @@
 
 namespace ReTooled {
     Game::Game() {
-        eventQueue = new QueueType();
+        m_eventQueue = new QueueType();
+        m_window = new Window("ReTooled", 800, 600);
+        m_window->setEventCallback(std::bind(&Game::onEvent, this, std::placeholders::_1));
     }
 
     Game::~Game() {
-        delete eventQueue;
+        delete m_eventQueue;
+        delete m_window;
     }
 
     void Game::run() {
-
-        // Create test event
-        eventQueue->enqueue(std::make_shared<KeyboardEvent>(10));
-
-        while (true) {
+        while (!m_window->closed()) {
+            m_window->update();
             // Process events
-            eventQueue->process();
-
-            // Stop the game for now
-            break;
+            m_eventQueue->process();
         }
     }
 
     void Game::registerEventListener(EventType type, ListenerType listener) {
-        eventQueue->appendListener(type, listener);
+        m_eventQueue->appendListener(type, listener);
+    }
+
+    void Game::onEvent(const EventPointer &event) {
+        m_eventQueue->dispatch(event);
     }
 }
