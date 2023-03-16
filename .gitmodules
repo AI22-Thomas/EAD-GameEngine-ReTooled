@@ -4,3 +4,6 @@
 [submodule "re-tooled/vendor/eventpp"]
 	path = re-tooled/vendor/eventpp
 	url = https://github.com/wqking/eventpp.git
+[submodule "re-tooled/vendor/glfw"]
+	path = re-tooled/vendor/glfw
+	url = https://github.com/glfw/glfw.git

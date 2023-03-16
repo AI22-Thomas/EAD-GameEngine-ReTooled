@@ -2,7 +2,6 @@
 #define RETOOLED_ENTRYPOINT_HPP
 
 #include "game.hpp"
-#include "log.hpp"
 
 extern ReTooled::Game *ReTooled::createGame();
 
