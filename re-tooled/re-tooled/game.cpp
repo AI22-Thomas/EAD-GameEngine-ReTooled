@@ -1,30 +1,34 @@
 #include "game.hpp"
+#include "rendering/glfw-window.hpp"
 
 namespace ReTooled {
     Game::Game() {
-        m_eventQueue = new QueueType();
-        m_window = new Window("ReTooled", 800, 600);
-        m_window->setEventCallback(std::bind(&Game::onEvent, this, std::placeholders::_1));
+        m_eventQueue = std::make_unique<QueueType>();
+
+        // For now instantiate a GLFW window, can be abstracted away to other rendering APIs
+        m_window = std::make_unique<GFLWWindow>();
+
+        m_window->setEventCallback([this](const EventPointer &event) {
+            m_eventQueue->dispatch(event);
+        });
+
+        registerEventListener(ReTooled::EventType::WindowClose, [this](const EventPointer &event) {
+            m_running = false;
+        });
     }
 
     Game::~Game() {
-        delete m_eventQueue;
-        delete m_window;
     }
 
     void Game::run() {
-        while (!m_window->closed()) {
+        while (m_running) {
             m_window->update();
             // Process events
             m_eventQueue->process();
         }
     }
 
-    void Game::registerEventListener(EventType type, ListenerType listener) {
+    void Game::registerEventListener(EventType type, const std::function<ListenerType>& listener) {
         m_eventQueue->appendListener(type, listener);
-    }
-
-    void Game::onEvent(const EventPointer &event) {
-        m_eventQueue->dispatch(event);
     }
 }

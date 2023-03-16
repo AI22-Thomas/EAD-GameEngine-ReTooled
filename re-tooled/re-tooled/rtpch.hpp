@@ -8,4 +8,6 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "eventpp/eventqueue.h"
 
+#include "log.hpp"
+
 #endif //RETOOLED_RTPCH_HPP

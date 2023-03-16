@@ -4,9 +4,9 @@ class ExampleGame : public ReTooled::Game {
 public:
     ExampleGame() : ReTooled::Game() {
         RT_LOG_INFO("ExampleGame created");
-        registerEventListener(ReTooled::EventType::Keyboard, [](const ReTooled::EventPointer & event) {
-            const auto *keyboardEvent = static_cast<const ReTooled::KeyboardEvent *>(event.get());
-            RT_LOG_INFO("KeyboardEvent: {}", keyboardEvent->getKey());
+        // register key press event listener and log the key pressed
+        registerEventListener(ReTooled::EventType::KeyPressed, [](const ReTooled::EventPointer &event) {
+            RT_LOG_INFO("Key pressed: {0}", static_cast<ReTooled::KeyPressedEvent *>(event.get())->getKey());
         });
     }
 };

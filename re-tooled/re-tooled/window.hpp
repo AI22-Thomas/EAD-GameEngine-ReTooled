@@ -1,35 +1,33 @@
 #ifndef RETOOLED_WINDOW_HPP
 #define RETOOLED_WINDOW_HPP
 
-#include "log.hpp"
 #include "event.hpp"
 
 namespace ReTooled {
 
+    struct WindowData {
+        std::string title = "ReTooled";
+        unsigned int width = 1280;
+        unsigned int height = 720;
+        std::function<void(const EventPointer &)> eventCallback;
+    };
+
     class Window {
     public:
-        Window(const char *title, int width, int height);
+        Window(const WindowData &data = WindowData()) : m_data(data) {}
 
-        ~Window();
+        virtual ~Window() {}
 
-        void update();
+        virtual void update() = 0;
 
-        bool closed() const;
+        virtual unsigned int getWidth() const = 0;
 
-        inline int getWidth() const { return m_width; }
+        virtual unsigned int getHeight() const = 0;
 
-        inline int getHeight() const { return m_height; }
+        virtual void setEventCallback(const std::function<ListenerType> &callback) = 0;
 
-        void setEventCallback(const std::function<void(const EventPointer &)> &callback) {
-            m_eventCallback = callback;
-        }
-
-    private:
-        GLFWwindow *m_window;
-        std::function<void(const EventPointer &)> m_eventCallback;
-        int m_width, m_height;
-        bool m_closed;
-        std::string m_name;
+    protected:
+        WindowData m_data;
     };
 
 } // ReTooled

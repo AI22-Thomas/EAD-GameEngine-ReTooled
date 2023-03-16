@@ -14,7 +14,8 @@ add_library(ReTooled SHARED
         re-tooled/re-tooled/event.hpp
         re-tooled/re-tooled/game.cpp
         re-tooled/re-tooled/log.cpp
-        re-tooled/re-tooled/window.cpp)
+        re-tooled/re-tooled/window.hpp
+        re-tooled/re-tooled/rendering/glfw-window.cpp)
 
 add_executable(ExampleGame example-game/main.cpp)
 
